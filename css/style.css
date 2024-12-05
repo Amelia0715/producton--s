@@ -1,0 +1,885 @@
+/* 重置样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: #000;
+    color: #fff;
+    overflow-x: hidden;
+}
+
+/* 加载动画样式 */
+.loader {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.loader-text {
+    color: #fff;
+    font-size: 2em;
+    margin-bottom: 20px;
+    opacity: 0;
+    
+}
+
+.loader-progress {
+    width: 0;
+    height: 2px;
+    background: #fff;
+  
+}
+
+/* Banner样式 */
+.banner {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+}
+
+
+
+.banner-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+}
+
+.banner-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 100%;
+    z-index: 1;
+}
+
+
+
+.glitch {
+    font-size: 5em;
+    font-weight: bold;
+    text-transform: uppercase;
+    position: relative;
+    color: #fff;
+    text-shadow: 
+        0 0 20px rgba(0, 255, 252, 0.5),
+        0 0 30px rgba(0, 255, 252, 0.3),
+        0 0 30px rgba(252, 0, 255, 0.2);
+    animation: glowEffect 2s infinite alternate;
+}
+
+
+.glitch span {
+    display: none;
+}
+
+/* 打字机效果 */
+.typing-text {
+    font-size: 1.5em;
+    margin: 20px 0;
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+    animation-delay: 3s;
+}
+
+/* 滚动提示 */
+.scroll-hint {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+    animation-delay: 3.5s;
+}
+
+.scroll-hint span {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 14px;
+    letter-spacing: 2px;
+}
+
+.scroll-arrow {
+    width: 30px;
+    height: 30px;
+    margin: 0 auto;
+    border-right: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    transform: rotate(45deg);
+    animation: scrollArrow 2s infinite;
+}
+
+
+
+/* 简化菜单样式 */
+.menu-wrapper {
+    position: absolute;
+    top: 40px;
+    right: 60px;
+    display: flex;
+    align-items: center;
+    z-index: 100;
+    cursor: pointer;
+    padding: 15px 25px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.menu-text {
+    color: #fff;
+    font-size: 1.8em;
+    margin-right: 20px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.menu-icon {
+    position: relative;
+    width: 35px;
+    height: 25px;
+}
+
+.menu-icon span {
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background: #fff;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.menu-icon span:nth-child(1) { top: 0; }
+.menu-icon span:nth-child(2) { top: 50%; transform: translateY(-50%); }
+.menu-icon span:nth-child(3) { bottom: 0; }
+
+/* 简化悬停效果 */
+.menu-wrapper:hover {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.menu-wrapper:hover .menu-text {
+    color: #00fffc;
+}
+
+
+
+/* 主要内容样式调整 */
+.banner-content {
+    padding: 0 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.glitch {
+    font-size: 6em;
+    margin-bottom: 30px;
+}
+
+.intro-text {
+    text-align: center;
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+    animation-delay: 0.5s;
+}
+
+.intro-text p:first-child {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    font-weight: 300;
+}
+
+.description {
+    font-size: 1.2em;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.8);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* 背景遮罩调整 */
+.banner-overlay {
+    background: linear-gradient(
+        45deg,
+        rgba(0, 0, 0, 0.7),
+        rgba(0, 0, 0, 0.5)
+    );
+}
+
+
+
+/* 菜单覆盖层 */
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 98;
+    clip-path: circle(0% at 95% 5%);
+    backdrop-filter: blur(10px);
+}
+
+/* 菜单内容 */
+.menu-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    text-align: center;
+}
+
+/* 菜单项样式 */
+.menu-items {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.menu-item {
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    padding: 1rem;
+}
+
+.menu-item-text {
+    position: relative;
+    font-size: 4em;
+    font-weight: bold;
+    color: #fff;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+    z-index: 1;
+}
+
+.menu-item-bg {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, #00fffc, #fc00ff);
+   
+}
+
+/* 菜单项悬停效果 */
+.menu-item:hover .menu-item-bg {
+    transform: translateX(100%);
+}
+
+.menu-item:hover .menu-item-text {
+    color: #000;
+}
+
+/* 页面切换动画 */
+.page-transition {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: #000;
+    transform-origin: bottom;
+    transform: scaleY(0);
+    z-index: 999;
+}
+
+/* 菜单图标激活状态 */
+.menu-wrapper.active .menu-icon span:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+}
+
+.menu-wrapper.active .menu-icon span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-wrapper.active .menu-icon span:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+}
+
+/* 修改作品展示区域样式 */
+.work-showcase {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(135deg, #1a1a2f 0%, #2d2b55 50%, #3b2d6e 100%);
+    z-index: 97;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+}
+
+.work-container {
+    position: relative;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.work-item {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    /* 每个作品项的渐变背景 */
+    background: linear-gradient(45deg, rgba(26, 26, 47, 0.3), rgba(45, 43, 85, 0.3));
+    transition: all 0.5s ease;
+}
+
+
+/* 悬停效果 */
+.work-item:hover {
+    background: linear-gradient(45deg, rgba(45, 43, 85, 0.4), rgba(71, 54, 132, 0.4));
+}
+
+/* 修改内容区域样式 */
+.work-content {
+    position: relative;
+    width: 80%;
+    max-width: 1200px;
+    height: 70vh;
+    display: flex;
+    gap: 50px;
+    background: rgba(255, 255, 255, 0.03); /* 微弱的白色背景 */
+    padding: 30px;
+    border-radius: 20px;
+   
+}
+
+/* 修改图片容器样式 */
+.work-image {
+    position: relative;
+    width: 60%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 20px;
+    transition: all 0.5s ease;
+
+}
+
+/* 移除遮罩，修改图片样式 */
+.work-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    
+}
+
+/* 图片悬停旋转 */
+.work-item:hover .work-image {
+    transform: perspective(1000px) rotateY(-5deg) translateX(-10px);
+    box-shadow: 0 20px 40px rgba(0, 255, 252, 0.15);
+}
+
+
+/* 修改文字样式 */
+.work-info {
+    position: relative;
+    width: 40%;
+    padding: 40px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.work-info h3 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.work-info p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* 移除之前的遮罩相关代码 */
+.work-image::before {
+    display: none;
+}
+
+
+/* 项详情页样式 */
+.project-detail {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(135deg, #1a1a2f 0%, #2d2b55 50%, #3b2d6e 100%);
+    z-index: 999;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+}
+
+.project-detail-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 100px 5%;
+}
+
+/* 返回按钮样式 */
+.back-button {
+    position: fixed;
+    top: 40px;
+    left: 40px;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.back-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
+.back-button::before,
+.back-button::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 2px;
+    background: #fff;
+    transition: all 0.3s ease;
+}
+
+.back-button::before {
+    transform: rotate(-45deg) translate(2px, -2px);
+    left: 12px;
+}
+
+.back-button::after {
+    transform: rotate(45deg) translate(2px, 2px);
+    left: 12px;
+}
+
+.back-button:hover::before,
+.back-button:hover::after {
+    background: #00fffc;
+    box-shadow: 0 0 10px rgba(0, 255, 252, 0.5);
+}
+
+/* 项目标题区域 */
+.project-header {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.project-header h1 {
+    font-size: 4em;
+    margin-bottom: 20px;
+    background: linear-gradient(45deg, #00fffc, #fc00ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.project-category {
+    font-size: 1.2em;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* 区域 */
+.project-hero {
+    width: 100%;
+    height: 70vh;
+    margin-bottom: 100px;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.project-hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 项目概述 */
+.project-overview {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    margin-bottom: 100px;
+}
+
+.overview-left h2 {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+}
+
+.overview-left p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.project-info .info-item {
+    margin-bottom: 30px;
+}
+
+.project-info h3 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: #00fffc;
+}
+
+/* 项目详情部分 */
+.project-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+    margin-bottom: 100px;
+}
+
+.project-section.reverse {
+    flex-direction: row-reverse;
+}
+
+.project-section.reverse .section-content {
+    direction: ltr;
+}
+
+.section-image {
+    flex: 0 0 45%;
+    border-radius: 20px;
+    overflow: hidden;
+
+}
+
+.section-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.section-image:hover {
+  
+}
+
+.section-image:hover img {
+ 
+}
+
+.section-content {
+    flex: 0 0 45%;
+}
+
+.section-content h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #fff;
+    background: linear-gradient(45deg, #00fffc, #fc00ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.section-content p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* 项目总结 */
+.project-conclusion {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 100px;
+}
+
+.project-conclusion h2 {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+}
+
+/* 下一个项目链接 */
+.next-project {
+    text-align: center;
+    padding: 50px 0;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.next-project:hover {
+    transform: translateY(-10px);
+}
+
+.next-project p {
+    font-size: 1.2em;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 10px;
+}
+
+.next-project h3 {
+    font-size: 2em;
+    color: #00fffc;
+}
+
+/* 添加菜单过渡动画样式 */
+.menu-transition-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background: linear-gradient(180deg, 
+        rgba(26, 26, 47, 0.95) 0%,
+        rgba(45, 43, 85, 0.95) 50%,
+        rgba(59, 45, 110, 0.95) 100%
+    );
+    z-index: 999;
+    pointer-events: none;
+}
+
+/* 修改 HOME 标题样式 */
+.home-title {
+    position: absolute;
+    top: 40px;
+    left: 60px;
+    font-size: 2em;
+    font-weight: bold;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    z-index: 10;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 10px rgba(0, 255, 252, 0.5);
+}
+
+.home-title:hover {
+    opacity: 1;
+    transform: scale(1.1);
+    color: #00fffc;
+    text-shadow: 0 0 20px rgba(0, 255, 252, 0.8);
+}
+
+.project-showcase {
+    width: 100%;
+    background: #000;
+    padding: 100px 5%;
+}
+
+.project-grid {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+}
+
+.project-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+    margin-bottom: 100px;
+}
+
+.project-section.reverse {
+    flex-direction: row-reverse;
+}
+
+.project-section.reverse .section-content {
+    direction: ltr;
+}
+
+.section-image {
+    flex: 0 0 45%;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+.section-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.section-image:hover {
+    transform: scale(1.02);
+}
+
+.section-image:hover img {
+    transform: scale(1.1);
+}
+
+.section-content {
+    flex: 0 0 45%;
+}
+
+.section-content h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #fff;
+    background: linear-gradient(45deg, #00fffc, #fc00ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.section-content p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+@media (max-width: 1024px) {
+    .project-section,
+    .project-section.reverse {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .section-image,
+    .section-content {
+        flex: 0 0 100%;
+    }
+}
+
+/* 添加 SVG 容器和动画样式 */
+.floating-svg-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.floating-svg {
+    position: absolute;
+    opacity: 0.5;
+}
+
+/* 不规则分布的 SVG 位置 */
+.svg-1 { top: 15%; left: 10%; width: 60px; height: 60px; animation: float1 8s infinite; }
+.svg-2 { top: 75%; right: 15%; width: 90px; height: 90px; animation: float2 6s infinite; }
+.svg-3 { top: 35%; left: 85%; width: 70px; height: 70px; animation: float3 7s infinite; }
+.svg-4 { top: 85%; left: 25%; width: 100px; height: 100px; animation: float1 9s infinite; }
+.svg-5 { top: 20%; right: 30%; width: 80px; height: 80px; animation: float2 7s infinite; }
+.svg-6 { top: 60%; left: 40%; width: 65px; height: 65px; animation: float3 8s infinite; }
+.svg-7 { top: 45%; right: 45%; width: 85px; height: 85px; animation: float1 6s infinite; }
+.svg-8 { top: 70%; right: 75%; width: 75px; height: 75px; animation: float2 8s infinite; }
+
+/* 添加更多 SVG */
+.svg-9 { top: 25%; left: 65%; width: 95px; height: 95px; animation: float3 7s infinite; }
+.svg-10 { top: 55%; right: 5%; width: 70px; height: 70px; animation: float1 8s infinite; }
+.svg-11 { top: 90%; left: 50%; width: 80px; height: 80px; animation: float2 9s infinite; }
+.svg-12 { top: 10%; right: 60%; width: 65px; height: 65px; animation: float3 6s infinite; }
+
+/* 定义浮动动画 */
+@keyframes float1 {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(10px, -15px) rotate(5deg); }
+    50% { transform: translate(-5px, 20px) rotate(-5deg); }
+    75% { transform: translate(-15px, -10px) rotate(3deg); }
+}
+
+@keyframes float2 {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(-15px, 10px) rotate(-8deg); }
+    50% { transform: translate(20px, -15px) rotate(8deg); }
+    75% { transform: translate(15px, 15px) rotate(-5deg); }
+}
+
+@keyframes float3 {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(15px, 15px) rotate(10deg); }
+    50% { transform: translate(-10px, -20px) rotate(-10deg); }
+    75% { transform: translate(-20px, 10px) rotate(5deg); }
+}
+
+/* 展示区域的 SVG 位置 */
+.showcase-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* 新增的 SVG 位置和动画 */
+.svg-13 { top: 5%; left: 8%; width: 85px; height: 85px; animation: float2 7s infinite; }
+.svg-14 { top: 65%; right: 12%; width: 70px; height: 70px; animation: float1 8s infinite; }
+.svg-15 { top: 30%; left: 75%; width: 95px; height: 95px; animation: float3 6s infinite; }
+.svg-16 { top: 80%; left: 35%; width: 65px; height: 65px; animation: float2 9s infinite; }
+.svg-17 { top: 15%; right: 25%; width: 75px; height: 75px; animation: float1 7s infinite; }
+.svg-18 { top: 50%; left: 45%; width: 90px; height: 90px; animation: float3 8s infinite; }
+.svg-19 { top: 40%; right: 38%; width: 80px; height: 80px; animation: float2 6s infinite; }
+.svg-20 { top: 75%; right: 65%; width: 70px; height: 70px; animation: float1 9s infinite; }
+.svg-21 { top: 20%; left: 55%; width: 85px; height: 85px; animation: float3 7s infinite; }
+.svg-22 { top: 60%; right: 15%; width: 75px; height: 75px; animation: float2 8s infinite; }
+.svg-23 { top: 85%; left: 42%; width: 65px; height: 65px; animation: float1 6s infinite; }
+.svg-24 { top: 25%; right: 48%; width: 90px; height: 90px; animation: float3 9s infinite; }
+.svg-25 { top: 70%; left: 18%; width: 80px; height: 80px; animation: float2 7s infinite; }
+.svg-26 { top: 35%; right: 28%; width: 70px; height: 70px; animation: float1 8s infinite; }
+
+/* 确保项目展示区域的相对定位 */
+.project-showcase {
+    position: relative;
+    overflow: hidden;
+}
+
+/* 调整项目内容的z-index，确保在SVG上层 */
+.project-grid {
+    position: relative;
+    z-index: 2;
+}
+
+/* 定义不同的动画效果 */
+@keyframes rotate360 {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes rotateReverse {
+    from { transform: rotate(360deg); }
+    to { transform: rotate(0deg); }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.3; }
+    50% { transform: scale(1.2); opacity: 0.6; }
+}
+

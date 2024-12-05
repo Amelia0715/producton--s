@@ -1,0 +1,24 @@
+{
+	"folders": [
+		{
+			"name": "Wb",
+			"path": "../../../../../../../../../../../../../../Documents/GitHub/Wb"
+		},
+		{
+			"name": "producton--s",
+			"path": "."
+		},
+		{
+			"name": "svg",
+			"path": "../../../../../../../../../../../../../../.Trash/svg"
+		},
+		{
+			"name": "producton--s的副本",
+			"path": "../producton--s的副本"
+		}
+	],
+	"settings": {
+		"liveServer.settings.port": 5501,
+		"liveServer.settings.multiRootWorkspaceName": "producton--s"
+	}
+}
